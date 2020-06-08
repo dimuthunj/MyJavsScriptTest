@@ -77,3 +77,22 @@ function selectSource()
 		marker.addTo(map);
 
 }
+// TODO: Write the function displayLockers
+function displayLockers(data)
+{
+  let textString = "";
+  let state = "";
+  for(let i=0;i<data.lockers.length;i++)
+  {
+    if(data.lockers[i].locked ==false){state='lock_open';}
+    else{state = 'lock';}
+    textString += '<div class="mdl-cell mdl-cell--4-col">'+
+    '<div class="mdl-card mdl-shadow--2dp locker" style="background-color:#'+data.lockers[i].color+'">'+
+    '<div class="mdl-card__title mdl-card--expand">'+
+    '<h2>'+data.lockers[i].id+'</h2>'+'<h4>&nbsp;'+data.lockers[i].label+'</h4>'+
+    '</div><div class="mdl-card__actions mdl-card--border">'+
+    '<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="view('+i+')">Open Locker</a>'+
+    '<div class="mdl-layout-spacer"></div><i class="material-icons">'+state+'</i></div>'+
+    '<div class="mdl-card__menu"><button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" name = "deletes" id = "'+i+'">'+
+    '<i class="material-icons">delete_forever</i></button></div></div></div>';
+  }
